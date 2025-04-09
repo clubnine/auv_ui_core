@@ -1,4 +1,5 @@
 import 'package:auv_core/auv_ui_core/auv_gaps.dart';
+import 'package:auv_core/auv_ui_core/divider_demo.dart';
 import 'package:auv_core/demo/auv_text_styles_demo.dart';
 import 'package:auv_core/demo/app_bar_demo.dart';
 import 'package:auv_core/demo/box_demo.dart';
@@ -83,6 +84,7 @@ class DemoHomePage extends StatelessWidget {
           _buildDemoItem(context, 'Image Loader 演示', Icons.album, const ImageLoaderDemoApp()),
           _buildDemoItem(context, 'Icon 演示', Icons.album, const IconDemoApp()),
           _buildDemoItem(context, '文字样式 演示', Icons.album, const AuvTextStylesDemo()),
+          _buildDemoItem(context, '线条 演示', Icons.album, const DividerDemoPage()),
         ],
       ),
     );
