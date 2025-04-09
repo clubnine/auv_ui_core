@@ -130,7 +130,7 @@ class _TagSelectorDemoContentState extends State<_TagSelectorDemoContent> {
             AuvTagSelector(
               tags: const [AuvTag(id: '15', name: '中', icon: 'http://image.amiya001.com/10001', checked: true)],
               onChanged: (tags) {},
-              size: AuvWidgetSize.middle,
+              size: AuvWidgetSize.medium,
               selectedColor: Colors.orange,
               unselectedColor: Colors.grey[300]!,
             ),

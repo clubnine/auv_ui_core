@@ -44,7 +44,7 @@ class _ImgTextDemoContent extends StatelessWidget {
             AuvGaps.vGap16,
             _buildImgTextItem('small', AuvImgTextLayout.horizontal, size: AuvWidgetSize.small),
             AuvGaps.vGap16,
-            _buildImgTextItem('middle', AuvImgTextLayout.horizontal, size: AuvWidgetSize.middle),
+            _buildImgTextItem('medium', AuvImgTextLayout.horizontal, size: AuvWidgetSize.medium),
             AuvGaps.vGap16,
             _buildImgTextItem('large', AuvImgTextLayout.horizontal, size: AuvWidgetSize.large),
           ]),
@@ -195,7 +195,7 @@ class _ImgTextDemoContent extends StatelessWidget {
             AuvGaps.vGap16,
             Container(
                 color: Colors.blue.withOpacity(0.2), //
-                child: AuvImgText().middle().build('WW'.fakeImg(width: 300), '文字')),
+                child: AuvImgText().medium().build('WW'.fakeImg(width: 300), '文字')),
             AuvGaps.vGap16,
             Container(
                 color: Colors.blue.withOpacity(0.2), //
@@ -204,15 +204,15 @@ class _ImgTextDemoContent extends StatelessWidget {
           _buildDivider(),
           _buildDemoSection('纯文本模式', [
             AuvBox().color(Colors.blue.withOpacity(0.2)).p12().build(
-                  AuvImgText().size(AuvWidgetSize.middle).backgroundColor(Colors.blue).textColor(Colors.white).build(null, '基础按钮'),
+                  AuvImgText().size(AuvWidgetSize.medium).backgroundColor(Colors.blue).textColor(Colors.white).build(null, '基础按钮'),
                 ),
             AuvGaps.vGap16,
             AuvBox().color(Colors.blue.withOpacity(0.2)).p12().build(
-                  AuvImgText().size(AuvWidgetSize.middle).backgroundColor(Colors.green).textColor(Colors.white).borderRadiusAll(20).build(null, '圆角按钮'),
+                  AuvImgText().size(AuvWidgetSize.medium).backgroundColor(Colors.green).textColor(Colors.white).borderRadiusAll(20).build(null, '圆角按钮'),
                 ),
             AuvGaps.vGap16,
             AuvBox().color(Colors.blue.withOpacity(0.2)).p12().build(
-                  AuvImgText().size(AuvWidgetSize.middle).border(color: Colors.orange, width: 2).textColor(Colors.orange).build(null, '边框按钮'),
+                  AuvImgText().size(AuvWidgetSize.medium).border(color: Colors.orange, width: 2).textColor(Colors.orange).build(null, '边框按钮'),
                 ),
             AuvGaps.vGap16,
             AuvBox().color(Colors.blue.withOpacity(0.2)).p12().build(
@@ -232,7 +232,7 @@ class _ImgTextDemoContent extends StatelessWidget {
             AuvGaps.vGap16,
             AuvBox().color(Colors.blue.withOpacity(0.2)).p12().build(
                   AuvImgText()
-                      .size(AuvWidgetSize.middle)
+                      .size(AuvWidgetSize.medium)
                       .textStyle(TextStyle(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
@@ -276,7 +276,7 @@ class _ImgTextDemoContent extends StatelessWidget {
   Widget _buildImgTextItem(
     String text,
     AuvImgTextLayout layout, {
-    AuvWidgetSize size = AuvWidgetSize.middle,
+    AuvWidgetSize size = AuvWidgetSize.medium,
     Color? backgroundColor,
     Decoration? decoration,
     VoidCallback? onTap,

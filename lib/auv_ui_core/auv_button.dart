@@ -22,7 +22,7 @@ class AuvButton {
   // 构建属性
   VoidCallback? _click;
   AuvWidgetType _type = AuvWidgetType.primary;
-  AuvWidgetSize _size = AuvWidgetSize.middle;
+  AuvWidgetSize _size = AuvWidgetSize.medium;
   AuvWidgetShape _shape = AuvWidgetShape.radius;
   double? _width;
   double? _height;
@@ -163,8 +163,8 @@ class AuvButton {
     return this;
   }
 
-  AuvButton middle() {
-    _size = AuvWidgetSize.middle;
+  AuvButton medium() {
+    _size = AuvWidgetSize.medium;
     return this;
   }
 
@@ -304,7 +304,7 @@ class AuvButton {
         AuvWidgetSize.tiny => 12.sp,
         AuvWidgetSize.mini => 14.sp,
         AuvWidgetSize.small => 16.sp,
-        AuvWidgetSize.middle => 18.sp,
+        AuvWidgetSize.medium => 18.sp,
         AuvWidgetSize.large => 20.sp,
       },
       fontWeight: FontWeight.w500,
@@ -356,7 +356,6 @@ class AuvButton {
     if (_decoration != null || _margin != null || _width != null || _height != null) {
       return Container(
         margin: _margin,
-        color: Colors.blue.withOpacity(0.2),
         width: _width,
         height: _height ?? _getDefaultHeight(),
         decoration: _decoration, // 应用装饰效果
@@ -386,7 +385,7 @@ class AuvButton {
         return EdgeInsets.symmetric(horizontal: _width != null ? 0 : 12.w, vertical: _height != null ? 0 : 4.w);
       case AuvWidgetSize.small:
         return EdgeInsets.symmetric(horizontal: _width != null ? 0 : 16.w, vertical: _height != null ? 0 : 6.w);
-      case AuvWidgetSize.middle:
+      case AuvWidgetSize.medium:
         return EdgeInsets.symmetric(horizontal: _width != null ? 0 : 20.w, vertical: _height != null ? 0 : 8.w);
       case AuvWidgetSize.large:
         return EdgeInsets.symmetric(horizontal: _width != null ? 0 : 24.w, vertical: _height != null ? 0 : 10.w);
@@ -457,7 +456,7 @@ class AuvButton {
         return 28;
       case AuvWidgetSize.small:
         return 32;
-      case AuvWidgetSize.middle:
+      case AuvWidgetSize.medium:
         return 36;
       case AuvWidgetSize.large:
         return 40;

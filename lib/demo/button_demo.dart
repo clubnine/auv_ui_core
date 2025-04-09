@@ -32,7 +32,7 @@ class _AppButtonDemoContent extends StatelessWidget {
             AuvButton().secondary().tiny().click(() => {}).text('secondary'),
             AuvButton().success().mini().click(() => {}).text('success'),
             AuvButton().warning().small().click(() => {}).text('warning'),
-            AuvButton().danger().middle().click(() => {}).text('danger'),
+            AuvButton().danger().medium().click(() => {}).text('danger'),
             AuvButton().info().large().click(() => {}).text('info'),
             AuvButton().info().large().width(double.infinity).click(() => {}).text('info'),
             AuvButton().info().large().width(200).circle().click(() => {}).text('info'),
@@ -47,7 +47,7 @@ class _AppButtonDemoContent extends StatelessWidget {
             AuvButton()
                 .click(() => _handleButtonPress('警告按钮'))
                 .type(AuvWidgetType.warning)
-                .middle()
+                .medium()
                 .circle()
                 .imgText('http://image.amiya001.com/10001', '主要按钮'),
           ]),
@@ -70,15 +70,15 @@ class _AppButtonDemoContent extends StatelessWidget {
                 .build(const Text('圆形按钮')),
           ]),
           _buildDemoSection('按钮宽高', [
-            AuvButton().primary().middle().width(200.w).click(() => _handleButtonPress('固定宽度')).text('固定宽度 200.w'),
+            AuvButton().primary().medium().width(200.w).click(() => _handleButtonPress('固定宽度')).text('固定宽度 200.w'),
             AuvGaps.vGap16,
-            AuvButton().success().middle().height(50.h).click(() => _handleButtonPress('固定高度')).text('固定高度 50.h'),
+            AuvButton().success().medium().height(50.h).click(() => _handleButtonPress('固定高度')).text('固定高度 50.h'),
             AuvGaps.vGap16,
-            AuvButton().warning().middle().width(150.w).height(45.h).click(() => _handleButtonPress('固定宽高')).text('固定宽高 150.w x 45.h'),
+            AuvButton().warning().medium().width(150.w).height(45.h).click(() => _handleButtonPress('固定宽高')).text('固定宽高 150.w x 45.h'),
             AuvGaps.vGap16,
-            AuvButton().info().middle().width(double.infinity).click(() => _handleButtonPress('全宽按钮')).text('全宽按钮'),
+            AuvButton().info().medium().width(double.infinity).click(() => _handleButtonPress('全宽按钮')).text('全宽按钮'),
             AuvGaps.vGap16,
-            AuvButton().danger().middle().width(120.w).height(120.w).click(() => _handleButtonPress('正方形按钮')).text('正方形\n120.w'),
+            AuvButton().danger().medium().width(120.w).height(120.w).click(() => _handleButtonPress('正方形按钮')).text('正方形\n120.w'),
           ]),
           _buildDemoSection('按钮状态', [
             AuvButton().click(() {}).build(const Text('正常按钮')),
@@ -97,7 +97,7 @@ class _AppButtonDemoContent extends StatelessWidget {
             AuvGaps.vGap16,
             // 新增渐变背景按钮
             AuvButton()
-                .middle()
+                .medium()
                 .click(() {})
                 .decoration(BoxDecoration(
                   gradient: LinearGradient(

@@ -107,7 +107,7 @@ class AuvTagSelector extends StatefulWidget {
     this.runSpacing,
     this.textStyle,
     this.borderRadius,
-    this.size = AuvWidgetSize.middle,
+    this.size = AuvWidgetSize.medium,
     this.single = false, // 新增单选模式开关
   });
 
@@ -133,7 +133,7 @@ class _AuvTagSelectorState extends State<AuvTagSelector> {
             AuvWidgetSize.tiny => 10,
             AuvWidgetSize.mini => 12,
             AuvWidgetSize.small => 14,
-            AuvWidgetSize.middle => 16,
+            AuvWidgetSize.medium => 16,
             AuvWidgetSize.large => 18,
           },
         ) ??
@@ -148,7 +148,7 @@ class _AuvTagSelectorState extends State<AuvTagSelector> {
           AuvWidgetSize.tiny => 5.w,
           AuvWidgetSize.mini => 6.w,
           AuvWidgetSize.small => 8.w,
-          AuvWidgetSize.middle => 10.w,
+          AuvWidgetSize.medium => 10.w,
           AuvWidgetSize.large => 12.w,
         };
   }
@@ -161,7 +161,7 @@ class _AuvTagSelectorState extends State<AuvTagSelector> {
           AuvWidgetSize.tiny => 5.w,
           AuvWidgetSize.mini => 6.w,
           AuvWidgetSize.small => 8.w,
-          AuvWidgetSize.middle => 10.w,
+          AuvWidgetSize.medium => 10.w,
           AuvWidgetSize.large => 12.w,
         };
   }

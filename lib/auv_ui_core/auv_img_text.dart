@@ -1,6 +1,8 @@
 import 'package:auv_core/auv_ui_core/auv_image.dart';
 import 'package:auv_core/auv_ui_core/auv_image_local.dart';
 import 'package:auv_core/auv_ui_core/auv_image_net.dart';
+import 'package:auv_core/auv_ui_core/auv_text.dart';
+import 'package:auv_core/auv_ui_core/auv_text_styles.dart';
 import 'package:auv_core/auv_ui_core/auv_widget_enums.dart';
 import 'package:flutter/material.dart';
 
@@ -141,7 +143,7 @@ class AuvImgText {
   TextStyle? _textStyle;
 
   /// 布局方式，默认为水平布局（图片左文字右）
-  AuvWidgetSize _size = AuvWidgetSize.middle;
+  AuvWidgetSize _size = AuvWidgetSize.medium;
 
   /// 组件尺寸枚举，控制整体大小
   AuvImgTextLayout _layout = AuvImgTextLayout.horizontal;
@@ -210,8 +212,8 @@ class AuvImgText {
     return size(AuvWidgetSize.small);
   }
 
-  AuvImgText middle() {
-    return size(AuvWidgetSize.middle);
+  AuvImgText medium() {
+    return size(AuvWidgetSize.medium);
   }
 
   AuvImgText large() {
@@ -297,7 +299,7 @@ class AuvImgText {
           AuvWidgetSize.tiny => 12,
           AuvWidgetSize.mini => 16,
           AuvWidgetSize.small => 24,
-          AuvWidgetSize.middle => 32,
+          AuvWidgetSize.medium => 32,
           AuvWidgetSize.large => 40,
         };
   }
@@ -310,7 +312,7 @@ class AuvImgText {
           AuvWidgetSize.tiny => 3,
           AuvWidgetSize.mini => 4,
           AuvWidgetSize.small => 8,
-          AuvWidgetSize.middle => 12,
+          AuvWidgetSize.medium => 12,
           AuvWidgetSize.large => 16,
         };
   }
@@ -325,21 +327,25 @@ class AuvImgText {
       AuvWidgetSize.tiny => const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       AuvWidgetSize.mini => const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       AuvWidgetSize.small => const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      AuvWidgetSize.middle => const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      AuvWidgetSize.medium => const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       AuvWidgetSize.large => const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
     };
   }
 
   // 修改_getTextStyle方法
   TextStyle _getTextStyle() {
-    final baseStyle = _textStyle ?? const TextStyle();
+    if (_textStyle != null) {
+      return _textStyle!;
+    }
+
+    final baseStyle = AuvTextStyles.caption_M;
     return baseStyle.copyWith(
       fontSize: switch (_size) {
         AuvWidgetSize.micro => 8,
         AuvWidgetSize.tiny => 10,
         AuvWidgetSize.mini => 12,
         AuvWidgetSize.small => 14,
-        AuvWidgetSize.middle => 16,
+        AuvWidgetSize.medium => 16,
         AuvWidgetSize.large => 18,
       },
       color: _textColor,
@@ -353,7 +359,7 @@ class AuvImgText {
       AuvWidgetSize.tiny => BorderRadius.circular(3),
       AuvWidgetSize.mini => BorderRadius.circular(4),
       AuvWidgetSize.small => BorderRadius.circular(6),
-      AuvWidgetSize.middle => BorderRadius.circular(8),
+      AuvWidgetSize.medium => BorderRadius.circular(8),
       AuvWidgetSize.large => BorderRadius.circular(10),
     };
   }

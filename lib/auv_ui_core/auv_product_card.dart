@@ -153,32 +153,32 @@ class AuvProductCard extends StatelessWidget {
                       ],
                     )),
 
-                    ///原始写法
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                          height: 44,
-                          width: double.infinity,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: AuvColors.primary),
-                          margin: EdgeInsets.symmetric(horizontal: 12.w),
-                          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                            Text("data", style: AuvTextStyles.w_caption_B),
-                            Text("data", style: AuvTextStyles.w_caption2_B_80),
-                          ])),
-                    ),
+                    // ///原始写法
+                    // InkWell(
+                    //   onTap: () {},
+                    //   child: Container(
+                    //       height: 44,
+                    //       width: double.infinity,
+                    //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: AuvColors.primary),
+                    //       margin: EdgeInsets.symmetric(horizontal: 12.w),
+                    //       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    //         Text("data", style: AuvTextStyles.w_caption_B),
+                    //         Text("data", style: AuvTextStyles.w_caption2_B_80),
+                    //       ])),
+                    // ),
 
-                    // 价格信息
-                    AuvGaps.vGap16,
-                    AuvButton().type(AuvWidgetType.primary).backgroundColor(Colors.black).circle().height(44).build(
-                          Column(
-                            children: [
-                              AuvText(currentPrice).style(AuvTextStyles.w_body2_B).build(),
-                              if (originalPrice != null) ...[
-                                AuvText(originalPrice!).style(AuvTextStyles.w_caption2_B_80).strikethrough().build(),
-                              ],
-                            ],
-                          ),
-                        ),
+                    // // 价格信息
+                    // AuvGaps.vGap16,
+                    // AuvButton().type(AuvWidgetType.primary).backgroundColor(Colors.black).circle().height(44).build(
+                    //       Column(
+                    //         children: [
+                    //           AuvText(currentPrice).style(AuvTextStyles.w_body2_B).build(),
+                    //           if (originalPrice != null) ...[
+                    //             AuvText(originalPrice!).style(AuvTextStyles.w_caption2_B_80).strikethrough().build(),
+                    //           ],
+                    //         ],
+                    //       ),
+                    //     ),
                   ],
                 ),
               ),

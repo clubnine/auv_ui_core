@@ -7,7 +7,7 @@ enum AuvWidgetSize {
   tiny, // 极小尺寸
   mini, // 迷你尺寸
   small, // 小尺寸
-  middle, // 中等尺寸
+  medium, // 中等尺寸
   large, // 大尺寸
 }
 
