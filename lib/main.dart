@@ -16,14 +16,15 @@ import 'package:auv_core/demo/space_demo.dart';
 import 'package:auv_core/demo/img_text_demo.dart';
 import 'package:auv_core/demo/tag_selector_demo.dart';
 import 'package:auv_core/demo/dialog_demo.dart';
+import 'pages/kimmi_landing_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MainDemoApp());
+  runApp(const MyApp());
 }
 
-class MainDemoApp extends StatelessWidget {
-  const MainDemoApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +34,13 @@ class MainDemoApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
-          title: 'AUV Core 演示',
-          theme: ThemeData(primarySwatch: Colors.blue),
-          home: const DemoHomePage(),
+          title: 'Kimmi',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.deepPurple,
+            fontFamily: 'Roboto',
+          ),
+          home: const KimmiLandingPage(),
         );
       },
     );
