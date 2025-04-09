@@ -11,6 +11,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 /// - 阴影效果控制
 /// - 边框样式定制
 /// - 点击交互效果
+/// - 宽度和高度设置
+/// - 内部元素对齐方式
 ///
 /// 使用示例：
 /// ```
@@ -18,6 +20,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 ///   .p8()    // 8pt全局内边距
 ///   .mh16()  // 水平16pt外边距
 ///   .r12()   // 12pt圆角
+///   .w(180)  // 设置宽度为180
+///   .h(240)  // 设置高度为240
+///   .align(Alignment.center)  // 设置内部元素居中对齐
 ///   .build(Text('内容'))
 /// ```
 class AuvBox {
@@ -58,11 +63,58 @@ class AuvBox {
   /// 可通过decoration()方法设置
   Decoration? _decoration;
 
+  /// 宽度设置，控制容器的宽度
+  /// 可通过w()方法设置
+  double? _width;
+
+  /// 高度设置，控制容器的高度
+  /// 可通过h()方法设置
+  double? _height;
+
+  /// 内部元素对齐方式
+  /// 可通过align()方法设置
+  AlignmentGeometry? _alignment;
+
+  /// 裁剪行为
+  /// 可通过clip()方法设置
+  Clip? _clipBehavior;
+
   // ... 已有方法保持不变 ...
+
+  /// 设置宽度
+  AuvBox w(double width) {
+    _width = width.w;
+    return this;
+  }
+
+  /// 设置高度
+  AuvBox h(double height) {
+    _height = height.h;
+    return this;
+  }
+
+  /// 设置尺寸（宽度和高度）
+  AuvBox size({double? width, double? height}) {
+    if (width != null) _width = width.w;
+    if (height != null) _height = height.h;
+    return this;
+  }
 
   /// 设置背景装饰效果
   AuvBox decoration(Decoration decoration) {
     _decoration = decoration;
+    return this;
+  }
+
+  /// 设置内部元素对齐方式
+  AuvBox align(AlignmentGeometry alignment) {
+    _alignment = alignment;
+    return this;
+  }
+
+  /// 设置裁剪行为
+  AuvBox clip(Clip clip) {
+    _clipBehavior = clip;
     return this;
   }
 
@@ -333,9 +385,12 @@ class AuvBox {
           );
 
     return Container(
+      width: _width,
+      height: _height,
       margin: _margin,
       padding: _padding,
-      clipBehavior: Clip.hardEdge,
+      alignment: _alignment,
+      clipBehavior: _clipBehavior ?? Clip.none,
       decoration: decoration,
       child: child,
     );

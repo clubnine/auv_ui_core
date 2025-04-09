@@ -11,7 +11,7 @@ class BoxDemoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('AppBox 演示')),
+      appBar: AppBar(title: const Text('AuvBox 演示')),
       body: _AppBoxDemoContent(),
     );
   }
@@ -30,6 +30,17 @@ class _AppBoxDemoContent extends StatelessWidget {
             _buildDemoBox('大圆角', AuvBox().r24().color(Colors.green)),
             _buildDemoBox('边框', AuvBox().border(Border.all(color: Colors.red, width: 2))),
             _buildDemoBox('阴影', AuvBox().elevation(8).circle().shadowColor(Colors.purple.withOpacity(0.3))),
+          ]),
+          _buildDemoSection('尺寸设置', [
+            _buildDemoBox('固定宽度', AuvBox().w(200).color(Colors.blue)),
+            _buildDemoBox('固定高度', AuvBox().h(100).color(Colors.green)),
+            _buildDemoBox('固定尺寸', AuvBox().size(width: 150, height: 80).color(Colors.orange)),
+            _buildDemoBox('自适应宽度', AuvBox().w(double.infinity).color(Colors.purple)),
+          ]),
+          _buildDemoSection('对齐方式', [
+            _buildDemoBox('居中对齐', AuvBox().align(Alignment.center).color(Colors.blue)),
+            _buildDemoBox('左上对齐', AuvBox().align(Alignment.topLeft).color(Colors.green)),
+            _buildDemoBox('右下对齐', AuvBox().align(Alignment.bottomRight).color(Colors.orange)),
           ]),
           _buildDemoSection('全局间距', [
             _buildDemoBox('内边距 p16', AuvBox().p16().r16().border(Border.all(color: Colors.red, width: 1)).color(Colors.yellow)),
@@ -50,57 +61,66 @@ class _AppBoxDemoContent extends StatelessWidget {
             _buildDemoBox('顶部外边距 mt16', AuvBox().mt16().color(Colors.yellow)),
             _buildDemoBox('底部外边距 mb16', AuvBox().mb16().color(Colors.yellow)),
           ]),
+          _buildDemoSection('裁剪效果', [
+            _buildDemoBox('硬裁剪', AuvBox().clip(Clip.hardEdge).r16().color(Colors.blue)),
+            _buildDemoBox('抗锯齿裁剪', AuvBox().clip(Clip.antiAlias).r16().color(Colors.green)),
+            _buildDemoBox('无裁剪', AuvBox().clip(Clip.none).r16().color(Colors.orange)),
+          ]),
           _buildDemoSection('组合用法', [
-            _buildDemoBox('卡片1', AuvBox().color(Colors.white).r12().p16().m8().elevation(4).border(Border.all(color: Colors.grey[300]!))),
-            _buildDemoBox('卡片2', AuvBox().color(Colors.blue[50]!).r8().ph16().pv8().mt16().mb8()),
+            _buildDemoBox('卡片1', AuvBox().color(Colors.white).r12().p16().m8().elevation(4).border(Border.all(color: Colors.grey[300]!)).w(300)),
+            _buildDemoBox('卡片2', AuvBox().color(Colors.blue[50]!).r8().ph16().pv8().mt16().mb8().w(double.infinity)),
+            _buildDemoBox(
+                '头像框',
+                AuvBox().circle().w(80).h(80).border(Border.all(color: Colors.white, width: 2)).elevation(4).decoration(BoxDecoration(
+                      image: DecorationImage(
+                        image: AuvImageNet.provider('https://picsum.photos/200'),
+                        fit: BoxFit.cover,
+                      ),
+                    ))),
           ]),
           _buildDemoSection('背景装饰', [
             _buildDemoBox(
-              '线性渐变背景',
-              AuvBox().decoration(BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.blue, Colors.purple],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-              )),
-            ),
+                '线性渐变背景',
+                AuvBox().w(300).h(100).decoration(BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.purple],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                    ))),
             _buildDemoBox(
-              '径向渐变背景',
-              AuvBox().decoration(BoxDecoration(
-                gradient: RadialGradient(
-                  colors: [Colors.yellow, Colors.orange],
-                  center: Alignment.topCenter,
-                ),
-              )),
-            ),
+                '径向渐变背景',
+                AuvBox().w(300).h(100).decoration(BoxDecoration(
+                      gradient: RadialGradient(
+                        colors: [Colors.yellow, Colors.orange],
+                        center: Alignment.topCenter,
+                      ),
+                    ))),
             _buildDemoBox(
-              '图片背景',
-              AuvBox().decoration(BoxDecoration(
-                image: DecorationImage(
-                  image: AuvImageNet.provider('https://picsum.photos/200/300'),
-                  fit: BoxFit.cover,
-                ),
-              )),
-            ),
+                '图片背景',
+                AuvBox().w(300).h(150).decoration(BoxDecoration(
+                      image: DecorationImage(
+                        image: AuvImageNet.provider('https://picsum.photos/200/300'),
+                        fit: BoxFit.cover,
+                      ),
+                    ))),
             _buildDemoBox(
-              '组合背景',
-              AuvBox().decoration(BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.transparent, Colors.black54],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-                image: DecorationImage(
-                  image: AuvImageNet.provider('https://picsum.photos/200/300'),
-                  fit: BoxFit.contain,
-                  colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.3),
-                    BlendMode.darken,
-                  ),
-                ),
-              )),
-            ),
+                '组合背景',
+                AuvBox().w(300).h(150).decoration(BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.transparent, Colors.black54],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                      image: DecorationImage(
+                        image: AuvImageNet.provider('https://picsum.photos/200/300'),
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(0.3),
+                          BlendMode.darken,
+                        ),
+                      ),
+                    ))),
           ]),
         ],
       ),
@@ -133,7 +153,7 @@ class _AppBoxDemoContent extends StatelessWidget {
           child: Text(label, style: const TextStyle(color: Colors.grey)),
         ),
         Container(
-          color: Colors.black45,
+          color: Colors.black12,
           child: box.build(
             Container(
               width: double.infinity,

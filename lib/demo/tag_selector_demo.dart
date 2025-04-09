@@ -18,8 +18,7 @@ class TagSelectorDemoApp extends StatelessWidget {
 
 class _TagSelectorDemoContent extends StatefulWidget {
   @override
-  State<_TagSelectorDemoContent> createState() =>
-      _TagSelectorDemoContentState();
+  State<_TagSelectorDemoContent> createState() => _TagSelectorDemoContentState();
 }
 
 class _TagSelectorDemoContentState extends State<_TagSelectorDemoContent> {
@@ -53,7 +52,6 @@ class _TagSelectorDemoContentState extends State<_TagSelectorDemoContent> {
             AuvGaps.vGap16,
             Text('已选择: ${_selectedTags.map((e) => e.name).join(', ')}'),
           ]),
-          
           _buildDemoSection('单选模式', [
             AuvTagSelector(
               tags: _tags,
@@ -64,7 +62,7 @@ class _TagSelectorDemoContentState extends State<_TagSelectorDemoContent> {
               },
               selectedColor: Colors.blue,
               unselectedColor: Colors.grey[300]!,
-              single: true,  // 启用单选模式
+              single: true, // 启用单选模式
             ),
             AuvGaps.vGap16,
             Text('已选择(单选): ${_selectedTags.isNotEmpty ? _selectedTags.first.name : "无"}'),
@@ -72,18 +70,9 @@ class _TagSelectorDemoContentState extends State<_TagSelectorDemoContent> {
           _buildDemoSection('带图标标签', [
             AuvTagSelector(
               tags: const [
-                AuvTag(
-                    id: '6',
-                    name: '搜索',
-                    icon: 'http://image.amiya001.com/10001'),
-                AuvTag(
-                    id: '7',
-                    name: '收藏',
-                    icon: 'http://image.amiya001.com/apple.png'),
-                AuvTag(
-                    id: '8',
-                    name: '分享',
-                    icon: 'http://image.amiya001.com/google.png'),
+                AuvTag(id: '6', name: '搜索', icon: 'http://image.amiya001.com/10001'),
+                AuvTag(id: '7', name: '收藏', icon: 'http://image.amiya001.com/apple.png'),
+                AuvTag(id: '8', name: '分享', icon: 'http://image.amiya001.com/google.png'),
               ],
               onChanged: (tags) {},
               selectedColor: Colors.green,
@@ -115,17 +104,7 @@ class _TagSelectorDemoContentState extends State<_TagSelectorDemoContent> {
           ]),
           _buildDemoSection('带图标的不同尺寸', [
             AuvTagSelector(
-              tags: const [
-                AuvTag(
-                    id: '13',
-                    name: '微',
-                    icon: 'http://image.amiya001.com/10001',
-                    checked: true),
-                AuvTag(
-                    id: '14',
-                    name: '小',
-                    icon: 'http://image.amiya001.com/10001'),
-              ],
+              tags: const [AuvTag(id: '13', name: '微', icon: 'http://image.amiya001.com/10001', checked: true)],
               onChanged: (tags) {},
               size: AuvWidgetSize.micro,
               selectedColor: Colors.orange,
@@ -133,17 +112,23 @@ class _TagSelectorDemoContentState extends State<_TagSelectorDemoContent> {
             ),
             AuvGaps.vGap16,
             AuvTagSelector(
-              tags: const [
-                AuvTag(
-                    id: '15',
-                    name: '中',
-                    icon: 'http://image.amiya001.com/10001',
-                    checked: true),
-                AuvTag(
-                    id: '16',
-                    name: '大',
-                    icon: 'http://image.amiya001.com/10001'),
-              ],
+              tags: const [AuvTag(id: '13', name: '极小', icon: 'http://image.amiya001.com/10001', checked: true)],
+              onChanged: (tags) {},
+              size: AuvWidgetSize.mini,
+              selectedColor: Colors.orange,
+              unselectedColor: Colors.grey[300]!,
+            ),
+            AuvGaps.vGap16,
+            AuvTagSelector(
+              tags: const [AuvTag(id: '14', name: '小', icon: 'http://image.amiya001.com/10001')],
+              onChanged: (tags) {},
+              size: AuvWidgetSize.small,
+              selectedColor: Colors.orange,
+              unselectedColor: Colors.grey[300]!,
+            ),
+            AuvGaps.vGap16,
+            AuvTagSelector(
+              tags: const [AuvTag(id: '15', name: '中', icon: 'http://image.amiya001.com/10001', checked: true)],
               onChanged: (tags) {},
               size: AuvWidgetSize.middle,
               selectedColor: Colors.orange,
@@ -151,20 +136,9 @@ class _TagSelectorDemoContentState extends State<_TagSelectorDemoContent> {
             ),
             AuvGaps.vGap16,
             AuvTagSelector(
-              tags: const [
-                AuvTag(
-                    id: '17',
-                    name: '特大',
-                    icon: 'http://image.amiya001.com/10001',
-                    checked: true),
-                AuvTag(
-                    id: '18',
-                    name: '超大',
-                    icon: 'http://image.amiya001.com/10001'),
-              ],
+              tags: const [AuvTag(id: '15', name: '大', icon: 'http://image.amiya001.com/10001', checked: true)],
               onChanged: (tags) {},
               size: AuvWidgetSize.large,
-              borderRadius: BorderRadius.circular(AuvDimens.d4),
               selectedColor: Colors.orange,
               unselectedColor: Colors.grey[300]!,
             ),

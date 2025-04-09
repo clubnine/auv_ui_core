@@ -1,4 +1,5 @@
 import 'package:auv_core/auv_ui_core/auv_image.dart';
+import 'package:auv_core/auv_ui_core/auv_img_text.dart';
 import 'package:auv_core/auv_ui_core/auv_widget_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -84,9 +85,6 @@ class AuvTagSelector extends StatefulWidget {
   /// 标签的尺寸大小，默认为中等大小
   final AuvWidgetSize size;
 
-  /// 单个标签的内边距，可选，会根据size自动计算
-  final EdgeInsetsGeometry? tagPadding;
-
   /// 选中标签的文字颜色，默认为白色
   final Color selectedTextColor;
 
@@ -110,8 +108,7 @@ class AuvTagSelector extends StatefulWidget {
     this.textStyle,
     this.borderRadius,
     this.size = AuvWidgetSize.middle,
-    this.tagPadding,
-    this.single = false,  // 新增单选模式开关
+    this.single = false, // 新增单选模式开关
   });
 
   @override
@@ -127,31 +124,9 @@ class _AuvTagSelectorState extends State<AuvTagSelector> {
     _selectedTags = widget.tags.where((tag) => tag.checked).toList();
   }
 
-  // 根据尺寸获取内边距
-  EdgeInsets _getTagPadding() {
-    if (widget.tagPadding != null) {
-      return widget.tagPadding!.resolve(TextDirection.ltr);
-    }
-    return switch (widget.size) {
-      AuvWidgetSize.micro =>
-        EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.w),
-      AuvWidgetSize.tiny =>
-        EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.w),
-      AuvWidgetSize.mini =>
-        EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.w),
-      AuvWidgetSize.small =>
-        EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.w),
-      AuvWidgetSize.middle =>
-        EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w),
-      AuvWidgetSize.large =>
-        EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.w),
-    };
-  }
-
   // 根据尺寸获取字体大小
   TextStyle _getTextStyle(BuildContext context) {
-    final baseStyle =
-        widget.textStyle ?? Theme.of(context).textTheme.bodyMedium;
+    final baseStyle = widget.textStyle ?? Theme.of(context).textTheme.bodyMedium;
     return baseStyle?.copyWith(
           fontSize: switch (widget.size) {
             AuvWidgetSize.micro => 8,
@@ -193,8 +168,7 @@ class _AuvTagSelectorState extends State<AuvTagSelector> {
 
   @override
   Widget build(BuildContext context) {
-    final effectiveBorderRadius =
-        widget.borderRadius ?? BorderRadius.circular(100);
+    final effectiveBorderRadius = widget.borderRadius ?? BorderRadius.circular(100);
 
     return Padding(
       padding: widget.padding ?? EdgeInsets.zero,
@@ -203,6 +177,8 @@ class _AuvTagSelectorState extends State<AuvTagSelector> {
         runSpacing: _getRunSpacing(),
         children: widget.tags.map((tag) {
           final isSelected = _selectedTags.any((t) => t.id == tag.id);
+
+          // 使用AuvImgText构建标签
           return GestureDetector(
             onTap: () {
               setState(() {
@@ -224,61 +200,21 @@ class _AuvTagSelectorState extends State<AuvTagSelector> {
                 widget.onChanged(_selectedTags);
               });
             },
-            child: Container(
-              padding: _getTagPadding(),
-              decoration: BoxDecoration(
-                color:
-                    isSelected ? widget.selectedColor : widget.unselectedColor,
-                borderRadius: effectiveBorderRadius,
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (tag.icon != null) ...[
-                    AuvImage.complex(
-                        url: tag.icon!,
-                        width: _getIconSize(),
-                        height: _getIconSize()),
-                    SizedBox(width: _getIconSpacing()), // 修改为动态间距
-                  ],
-                  Text(
-                    tag.name,
-                    style: _getTextStyle(context).copyWith(
-                      color: isSelected
-                          ? widget.selectedTextColor
-                          : widget.unselectedTextColor,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            child: AuvImgText()
+                .size(widget.size)
+                .backgroundColor(isSelected ? widget.selectedColor : widget.unselectedColor)
+                .borderRadius(effectiveBorderRadius)
+                .textStyle(_getTextStyle(context).copyWith(
+                  color: isSelected ? widget.selectedTextColor : widget.unselectedTextColor,
+                ))
+                .build(
+                  tag.icon,
+                  tag.name,
+                ),
           );
         }).toList(),
       ),
     );
-  }
-
-  double _getIconSize() {
-    return switch (widget.size) {
-      AuvWidgetSize.micro => 10.w,
-      AuvWidgetSize.tiny => 12.w,
-      AuvWidgetSize.mini => 14.w,
-      AuvWidgetSize.small => 16.w,
-      AuvWidgetSize.middle => 18.w,
-      AuvWidgetSize.large => 20.w,
-    };
-  }
-
-  // 新增方法：根据尺寸获取图标间距
-  double _getIconSpacing() {
-    return switch (widget.size) {
-      AuvWidgetSize.micro => 2.w,
-      AuvWidgetSize.tiny => 3.w,
-      AuvWidgetSize.mini => 4.w,
-      AuvWidgetSize.small => 6.w,
-      AuvWidgetSize.middle => 8.w,
-      AuvWidgetSize.large => 10.w,
-    };
   }
 }
 

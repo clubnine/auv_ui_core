@@ -56,7 +56,7 @@ enum AuvImgTextLayout {
 ///    └─────────────────┘
 ///    AuvImgText()
 ///     .size(AuvWidgetSize.middle)
-///     .build(AssetImage('icon.png'), '点击登录')
+///     .build('icon.png', '点击登录')
 ///
 /// 2. 垂直布局带圆角：
 ///    ┌─────────────────┐
@@ -66,7 +66,7 @@ enum AuvImgTextLayout {
 ///    AuvImgText()
 ///     .layout(AuvImgTextLayout.vertical)
 ///     .borderRadius(BorderRadius.circular(8))
-///     .build(NetworkImage('icon.png'), '立即购买')
+///     .build('icon.png', '立即购买')
 ///
 /// 3. 小型禁用按钮：
 ///    ┌─────────────┐
@@ -75,7 +75,17 @@ enum AuvImgTextLayout {
 ///    AuvImgText()
 ///     .size(AuvWidgetSize.small)
 ///     .backgroundColor(Colors.grey[200])
-///     .build(AssetImage('icon.png'), '已售罄')
+///     .build('icon.png', '已售罄')
+///
+/// 4. 纯文本按钮：
+///    ┌─────────────┐
+///    │   登录      │ ← 无图片
+///    └─────────────┘
+///    AuvImgText()
+///     .size(AuvWidgetSize.middle)
+///     .backgroundColor(Colors.blue)
+///     .textColor(Colors.white)
+///     .build(null, '登录')
 ///
 /// [══════════ 布局类型 ══════════]
 ///
@@ -136,10 +146,51 @@ class AuvImgText {
   /// 组件尺寸枚举，控制整体大小
   AuvImgTextLayout _layout = AuvImgTextLayout.horizontal;
 
+  /// 宽度设置
+  double? _width;
+
+  /// 高度设置
+  double? _height;
+
+  /// 文本颜色
+  Color? _textColor;
+
+  /// 边框颜色，默认为null(无边框)
+  Color? _borderColor;
+
+  /// 边框宽度，默认为1.0
+  double _borderWidth = 1.0;
+
   AuvImgText();
 
+  /// 设置组件尺寸
   AuvImgText size(AuvWidgetSize size) {
     _size = size;
+    return this;
+  }
+
+  /// 设置宽度
+  AuvImgText width(double width) {
+    _width = width;
+    return this;
+  }
+
+  /// 设置高度
+  AuvImgText height(double height) {
+    _height = height;
+    return this;
+  }
+
+  /// 设置文本颜色
+  AuvImgText textColor(Color color) {
+    _textColor = color;
+    return this;
+  }
+
+  /// 设置边框
+  AuvImgText border({Color? color, double width = 1.0}) {
+    _borderColor = color;
+    _borderWidth = width;
     return this;
   }
 
@@ -228,6 +279,16 @@ class AuvImgText {
     return this;
   }
 
+  AuvImgText borderRadiusAll(double radius) {
+    _borderRadius = BorderRadius.all(Radius.circular(radius));
+    return this;
+  }
+
+  AuvImgText circle() {
+    _borderRadius = BorderRadius.circular(100);
+    return this;
+  }
+
   // 修改_getImageSize方法
   double _getImageSize() {
     return _imageSize ??
@@ -260,12 +321,12 @@ class AuvImgText {
       return _padding!.resolve(TextDirection.ltr);
     }
     return switch (_size) {
-      AuvWidgetSize.micro => const EdgeInsets.all(3),
-      AuvWidgetSize.tiny => const EdgeInsets.all(4),
-      AuvWidgetSize.mini => const EdgeInsets.all(6),
-      AuvWidgetSize.small => const EdgeInsets.all(8),
-      AuvWidgetSize.middle => const EdgeInsets.all(12),
-      AuvWidgetSize.large => const EdgeInsets.all(16),
+      AuvWidgetSize.micro => const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+      AuvWidgetSize.tiny => const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      AuvWidgetSize.mini => const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      AuvWidgetSize.small => const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      AuvWidgetSize.middle => const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      AuvWidgetSize.large => const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
     };
   }
 
@@ -281,6 +342,7 @@ class AuvImgText {
         AuvWidgetSize.middle => 16,
         AuvWidgetSize.large => 18,
       },
+      color: _textColor,
     );
   }
 
@@ -296,28 +358,27 @@ class AuvImgText {
     };
   }
 
-  /// 构建方法
-  /// imagePath: 图片路径，可以是网络路径或本地路径
+  /// 统一的构建方法
+  /// imagePath: 图片路径，可以是网络路径或本地路径，如果为null则只显示文本
   /// text: 显示的文字内容
-  Widget build(String imagePath, String text) {
+  Widget build(String? imagePath, String text) {
+    if (imagePath == null) {
+      return _buildTextOnly(text);
+    }
     return buildWithImageProvider(AuvImage.complexProvider(imagePath), text);
   }
 
-  /// 边框颜色，默认为null(无边框)
-  Color? _borderColor;
-
-  /// 边框宽度，默认为1.0
-  double _borderWidth = 1.0;
-
-  /// 设置边框
-  AuvImgText border({Color? color, double width = 1.0}) {
-    _borderColor = color;
-    _borderWidth = width;
-    return this;
+  /// 纯文本构建方法
+  /// text: 显示的文字内容
+  Widget text(String text) {
+    return _buildTextOnly(text);
   }
 
+  /// 使用ImageProvider构建
+  /// image: 图片提供者
+  /// text: 显示的文字内容
   Widget buildWithImageProvider(ImageProvider image, String text) {
-    if (_backgroundColor == null && _decoration == null && _margin == null && _borderColor == null) {
+    if (_backgroundColor == null && _decoration == null && _margin == null && _borderColor == null && _width == null && _height == null) {
       return _buildContent(image, text);
     }
 
@@ -348,10 +409,55 @@ class AuvImgText {
 
     return Container(
       margin: _margin,
+      width: _width,
+      height: _height,
       child: Container(
         padding: _getPadding(),
         decoration: decoration,
         child: _buildContent(image, text),
+      ),
+    );
+  }
+
+  /// 构建纯文本内容
+  Widget _buildTextOnly(String text) {
+    if (_backgroundColor == null && _decoration == null && _margin == null && _borderColor == null && _width == null && _height == null) {
+      return Text(text, style: _getTextStyle());
+    }
+
+    final borderRadius = _borderRadius ?? _getDefaultBorderRadius();
+    BoxDecoration decoration;
+    if (_decoration != null && _decoration is BoxDecoration) {
+      decoration = (_decoration as BoxDecoration).copyWith(
+        borderRadius: _decoration is BoxDecoration ? (_decoration as BoxDecoration).borderRadius ?? borderRadius : borderRadius,
+        border: _borderColor != null
+            ? Border.all(
+                color: _borderColor!,
+                width: _borderWidth,
+              )
+            : null,
+      );
+    } else {
+      decoration = BoxDecoration(
+        borderRadius: borderRadius,
+        color: _backgroundColor,
+        border: _borderColor != null
+            ? Border.all(
+                color: _borderColor!,
+                width: _borderWidth,
+              )
+            : null,
+      );
+    }
+
+    return Container(
+      margin: _margin,
+      width: _width,
+      height: _height,
+      child: Container(
+        padding: _getPadding(),
+        decoration: decoration,
+        child: Text(text, style: _getTextStyle()),
       ),
     );
   }
@@ -363,21 +469,20 @@ class AuvImgText {
   Widget _buildContent(ImageProvider image, String text) {
     // 构建图片Widget，使用计算得到的尺寸
     final imageWidget = Image(
-      image: image, // 修正为_image
+      image: image,
       width: _getImageSize(),
       height: _getImageSize(),
       fit: BoxFit.cover,
     );
 
     // 构建文本Widget，使用计算得到的文本样式
-    final textWidget = Text(text, style: _getTextStyle()); // 修正为_text
+    final textWidget = Text(text, style: _getTextStyle());
 
     // 获取计算后的间距值
     final currentSpacing = _getSpacing();
 
     // 根据布局类型返回不同的排列方式
     switch (_layout) {
-      // 修正为_layout
       case AuvImgTextLayout.horizontal:
         return Row(
           mainAxisSize: MainAxisSize.min,

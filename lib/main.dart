@@ -16,15 +16,15 @@ import 'package:auv_core/demo/space_demo.dart';
 import 'package:auv_core/demo/img_text_demo.dart';
 import 'package:auv_core/demo/tag_selector_demo.dart';
 import 'package:auv_core/demo/dialog_demo.dart';
-import 'pages/kimmi_landing_page.dart';
+import 'demo/auv_text_demo.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(const MainDemoApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MainDemoApp extends StatelessWidget {
+  const MainDemoApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +34,9 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
-          title: 'Kimmi',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: Colors.deepPurple,
-            fontFamily: 'Roboto',
-          ),
-          home: const KimmiLandingPage(),
+          title: 'AUV Core 演示',
+          theme: ThemeData(primarySwatch: Colors.blue),
+          home: const DemoHomePage(),
         );
       },
     );
@@ -89,6 +85,7 @@ class DemoHomePage extends StatelessWidget {
           _buildDemoItem(context, 'Image Loader 演示', Icons.album, const ImageLoaderDemoApp()),
           _buildDemoItem(context, 'Icon 演示', Icons.album, const IconDemoApp()),
           _buildDemoItem(context, '文字样式 演示', Icons.album, const AuvTextStylesDemo()),
+          _buildDemoItem(context, 'AuvText 演示', Icons.text_fields, const AuvTextDemoApp()),
           _buildDemoItem(context, '线条 演示', Icons.album, const DividerDemoPage()),
         ],
       ),

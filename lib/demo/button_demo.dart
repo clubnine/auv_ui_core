@@ -69,6 +69,17 @@ class _AppButtonDemoContent extends StatelessWidget {
                 //
                 .build(const Text('圆形按钮')),
           ]),
+          _buildDemoSection('按钮宽高', [
+            AuvButton().primary().middle().width(200.w).onPressed(() => _handleButtonPress('固定宽度')).text('固定宽度 200.w'),
+            AuvGaps.vGap16,
+            AuvButton().success().middle().height(50.h).onPressed(() => _handleButtonPress('固定高度')).text('固定高度 50.h'),
+            AuvGaps.vGap16,
+            AuvButton().warning().middle().width(150.w).height(45.h).onPressed(() => _handleButtonPress('固定宽高')).text('固定宽高 150.w x 45.h'),
+            AuvGaps.vGap16,
+            AuvButton().info().middle().width(double.infinity).onPressed(() => _handleButtonPress('全宽按钮')).text('全宽按钮'),
+            AuvGaps.vGap16,
+            AuvButton().danger().middle().width(120.w).height(120.w).onPressed(() => _handleButtonPress('正方形按钮')).text('正方形\n120.w'),
+          ]),
           _buildDemoSection('按钮状态', [
             AuvButton().onPressed(() {}).build(const Text('正常按钮')),
             AuvGaps.vGap16,
