@@ -1,3 +1,5 @@
+import 'package:auv_core/auv_ui_core/auv_colors.dart';
+import 'package:auv_core/auv_ui_core/auv_dimens.dart';
 import 'package:auv_core/auv_ui_core/auv_img_text.dart';
 import 'package:auv_core/auv_ui_core/auv_widget_enums.dart';
 import 'package:flutter/material.dart';
@@ -6,41 +8,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// 按钮构造工具类，采用构建者模式创建按钮
 ///
-/// 使用示例：
-/// 1. 基础按钮：
-///    AppButton()
-///      .child(Text('提交'))
-///      .onPressed(() {})
-///      .build()
-///
-/// 2. 带背景图片按钮：
-///    AppButton()
-///      .child(Text('背景按钮'))
-///      .onPressed(() {})
-///      .backgroundImage(NetworkImage('url'))
-///      .build()
-///
-/// 3. 自定义样式按钮：
-///    AppButton()
-///      .child(Text('警告'))
-///      .onPressed(() {})
-///      .type(AuvWidgetType.warning)
-///      .size(AuvWidgetSize.large)
-///      .shape(AuvWidgetShape.radius)
-///      .radius(8)
-///      .build()
-///
-/// 4. 禁用状态按钮：
-///    AppButton()
-///      .child(Text('禁用'))
-///      .onPressed(() {})
-///      .disabled(true)
-///      .build()
-///
-/// 注意：child和onPressed是必填参数，必须在调用build()前设置
 class AuvButton {
   // 颜色常量
-  static const Color _primaryColor = Color(0xFF409EFF);
+  static const Color _primaryColor = AuvColors.primary;
+
+  ///
   static const Color _successColor = Color(0xFF67C23A);
   static const Color _warningColor = Color(0xFFE6A23C);
   static const Color _dangerColor = Color(0xFFF56C6C);
@@ -57,11 +29,15 @@ class AuvButton {
   double _radius = 4;
   bool _disabled = false;
   Color? _borderColor;
+  double? _borderWidth;
   Color? _backgroundColor;
   Color? _textColor;
   Color? _disabledColor;
   Color? _disabledTextColor;
   List<BoxShadow>? _shadow;
+
+  /// 背景装饰效果，可替代backgroundColor实现更复杂的背景
+  Decoration? _decoration;
 
   AuvButton();
 
@@ -73,6 +49,36 @@ class AuvButton {
 
   AuvButton type(AuvWidgetType type) {
     _type = type;
+    return this;
+  }
+
+  AuvButton primary() {
+    _type = AuvWidgetType.primary;
+    return this;
+  }
+
+  AuvButton secondary() {
+    _type = AuvWidgetType.secondary;
+    return this;
+  }
+
+  AuvButton success() {
+    _type = AuvWidgetType.success;
+    return this;
+  }
+
+  AuvButton warning() {
+    _type = AuvWidgetType.warning;
+    return this;
+  }
+
+  AuvButton danger() {
+    _type = AuvWidgetType.danger;
+    return this;
+  }
+
+  AuvButton info() {
+    _type = AuvWidgetType.info;
     return this;
   }
 
@@ -132,13 +138,68 @@ class AuvButton {
     return this;
   }
 
+  AuvButton r2() {
+    _shape = AuvWidgetShape.radius;
+    _radius = AuvDimens.d2;
+    return this;
+  }
+
+  AuvButton r4() {
+    _shape = AuvWidgetShape.radius;
+    _radius = AuvDimens.d4;
+    return this;
+  }
+
+  AuvButton r8() {
+    _shape = AuvWidgetShape.radius;
+    _radius = AuvDimens.d8;
+    return this;
+  }
+
+  AuvButton r12() {
+    _shape = AuvWidgetShape.radius;
+    _radius = AuvDimens.d12;
+    return this;
+  }
+
+  AuvButton r16() {
+    _shape = AuvWidgetShape.radius;
+    _radius = AuvDimens.d16;
+    return this;
+  }
+
+  AuvButton r20() {
+    _shape = AuvWidgetShape.radius;
+    _radius = AuvDimens.d20;
+    return this;
+  }
+
+  AuvButton r24() {
+    _shape = AuvWidgetShape.radius;
+    _radius = AuvDimens.d24;
+    return this;
+  }
+
+  AuvButton r32() {
+    _shape = AuvWidgetShape.radius;
+    _radius = AuvDimens.d32;
+    return this;
+  }
+
+  AuvButton r40() {
+    _shape = AuvWidgetShape.radius;
+    _radius = AuvDimens.d40;
+    return this;
+  }
+
   AuvButton disabled(bool disabled) {
     _disabled = disabled;
     return this;
   }
 
-  AuvButton borderColor(Color color) {
+  AuvButton border(Color color, {double width = 1}) {
     _borderColor = color;
+    _borderWidth = width;
     return this;
   }
 
@@ -172,8 +233,7 @@ class AuvButton {
   ///[text] 文本内容
   Widget imgText(String imagePath, String text) {
     TextStyle textStyle = _getTextStyle();
-    return build(
-        AuvImgText().size(_size).textStyle(textStyle).build(imagePath, text));
+    return build(AuvImgText().size(_size).textStyle(textStyle).build(imagePath, text));
   }
 
   TextStyle _getTextStyle() {
@@ -207,6 +267,12 @@ class AuvButton {
     ));
   }
 
+  /// 设置背景装饰效果
+  AuvButton decoration(Decoration decoration) {
+    _decoration = decoration;
+    return this;
+  }
+
   Widget build(Widget child) {
     final buttonStyle = ButtonStyle(
       backgroundColor: MaterialStateProperty.resolveWith<Color>(
@@ -216,9 +282,7 @@ class AuvButton {
       shape: MaterialStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: _getBorderRadius(),
-          side: _borderColor != null
-              ? BorderSide(color: _borderColor!)
-              : BorderSide.none,
+          side: _borderColor != null ? BorderSide(color: _borderColor!, width: _borderWidth!) : BorderSide.none,
         ),
       ),
       minimumSize: MaterialStateProperty.all(
@@ -228,13 +292,27 @@ class AuvButton {
       shadowColor: MaterialStateProperty.all(
         _shadow?.first.color ?? Colors.transparent,
       ),
+      // 添加装饰效果
+      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      surfaceTintColor: MaterialStateProperty.all(Colors.transparent),
     );
 
-    return ElevatedButton(
-      style: buttonStyle,
-      onPressed: _disabled ? null : _onPressed,
-      child: child,
-    );
+    if (_decoration != null) {
+      return Container(
+        decoration: _decoration, // 应用装饰效果
+        child: ElevatedButton(
+          style: buttonStyle,
+          onPressed: _disabled ? null : _onPressed,
+          child: child,
+        ),
+      );
+    } else {
+      return ElevatedButton(
+        style: buttonStyle,
+        onPressed: _disabled ? null : _onPressed,
+        child: child,
+      );
+    }
   }
 
   EdgeInsets _getPadding() {
@@ -298,6 +376,10 @@ class AuvButton {
   }
 
   Color _getEffectiveBgColor(Set<MaterialState> states) {
+    if (_decoration != null) {
+      return Colors.transparent;
+    }
+
     if (states.contains(MaterialState.disabled)) {
       return _disabledColor ?? _getButtonColor().withOpacity(0.5);
     }

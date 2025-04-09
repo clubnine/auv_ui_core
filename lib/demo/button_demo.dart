@@ -28,36 +28,21 @@ class _AppButtonDemoContent extends StatelessWidget {
       child: Column(
         children: [
           _buildDemoSection('基础按钮类型', [
-            AuvButton()
-                .onPressed(() => _handleButtonPress('主要按钮'))
-                .type(AuvWidgetType.primary)
-                .micro()
-                .text('主要按钮'),
+            AuvButton().primary().micro().onPressed(() => {}).text('primary'),
+            AuvButton().secondary().tiny().onPressed(() => {}).text('secondary'),
+            AuvButton().success().mini().onPressed(() => {}).text('success'),
+            AuvButton().warning().small().onPressed(() => {}).text('warning'),
+            AuvButton().danger().middle().onPressed(() => {}).text('danger'),
+            AuvButton().info().large().onPressed(() => {}).text('info'),
+            AuvButton().info().large().width(double.infinity).onPressed(() => {}).text('info'),
+            AuvButton().info().large().width(200).circle().onPressed(() => {}).text('info'),
+            AuvButton().info().large().height(60).circle().r16().onPressed(() => {}).text('超大按钮1'),
             AuvGaps.vGap16,
-            AuvButton()
-                .onPressed(() => _handleButtonPress('成功按钮'))
-                .type(AuvWidgetType.success)
-                .mini()
-                .text('成功按钮'),
-            AuvGaps.vGap16,
-            AuvButton()
-                .onPressed(() => _handleButtonPress('警告按钮'))
-                .type(AuvWidgetType.warning)
-                .middle()
-                .text('警告按钮'),
           ]),
           _buildDemoSection('图文按钮', [
-            AuvButton()
-                .onPressed(() => _handleButtonPress('主要按钮'))
-                .type(AuvWidgetType.primary)
-                .micro()
-                .imgText('http://image.amiya001.com/10001', '主要按钮'),
+            AuvButton().onPressed(() => _handleButtonPress('主要按钮')).type(AuvWidgetType.primary).micro().imgText('http://image.amiya001.com/10001', '主要按钮'),
             AuvGaps.vGap16,
-            AuvButton()
-                .onPressed(() => _handleButtonPress('成功按钮'))
-                .type(AuvWidgetType.success)
-                .mini()
-                .imgText('http://image.amiya001.com/10001', '主要按钮'),
+            AuvButton().onPressed(() => _handleButtonPress('成功按钮')).type(AuvWidgetType.success).mini().imgText('http://image.amiya001.com/10001', '主要按钮'),
             AuvGaps.vGap16,
             AuvButton()
                 .onPressed(() => _handleButtonPress('警告按钮'))
@@ -67,20 +52,11 @@ class _AppButtonDemoContent extends StatelessWidget {
                 .imgText('http://image.amiya001.com/10001', '主要按钮'),
           ]),
           _buildDemoSection('按钮尺寸', [
-            AuvButton()
-                .onPressed(() => _handleButtonPress('微型按钮'))
-                .size(AuvWidgetSize.micro)
-                .build(const Text('微型按钮')),
+            AuvButton().onPressed(() => _handleButtonPress('微型按钮')).size(AuvWidgetSize.micro).build(const Text('微型按钮')),
             AuvGaps.vGap16,
-            AuvButton()
-                .onPressed(() => _handleButtonPress('小型按钮'))
-                .size(AuvWidgetSize.small)
-                .build(const Text('小型按钮')),
+            AuvButton().onPressed(() => _handleButtonPress('小型按钮')).size(AuvWidgetSize.small).build(const Text('小型按钮')),
             AuvGaps.vGap16,
-            AuvButton()
-                .onPressed(() => _handleButtonPress('大型按钮'))
-                .size(AuvWidgetSize.large)
-                .build(const Text('大型按钮')),
+            AuvButton().onPressed(() => _handleButtonPress('大型按钮')).size(AuvWidgetSize.large).build(const Text('大型按钮')),
           ]),
           _buildDemoSection('按钮形状', [
             AuvButton().onPressed(() {}).radius(8).build(const Text('圆角按钮')),
@@ -96,10 +72,7 @@ class _AppButtonDemoContent extends StatelessWidget {
           _buildDemoSection('按钮状态', [
             AuvButton().onPressed(() {}).build(const Text('正常按钮')),
             AuvGaps.vGap16,
-            AuvButton()
-                .onPressed(() {})
-                .disabled(true)
-                .build(const Text('禁用按钮')),
+            AuvButton().onPressed(() {}).disabled(true).build(const Text('禁用按钮')),
           ]),
           _buildDemoSection('高级用法', [
             AuvButton()
@@ -107,24 +80,40 @@ class _AppButtonDemoContent extends StatelessWidget {
                 .onPressed(() {})
                 .backgroundColor(Colors.purple)
                 .textColor(Colors.white)
-                .borderColor(Colors.deepPurple)
-                .radius(20)
+                .border(Colors.red, width: 3)
+                .circle()
                 .build(const Text('自定义样式')),
             AuvGaps.vGap16,
-            AuvButton().onPressed(() {}).shadow([
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 5,
-                offset: const Offset(0, 3),
-              )
-            ]).build(const Text('带阴影按钮')),
-            AuvGaps.vGap16,
+            // 新增渐变背景按钮
             AuvButton()
-                .onPressed(() => _handleButtonPress('带背景图'))
-                .width(200)
-                .height(60)
-                .build(const Text('带背景图')),
+                .middle()
+                .onPressed(() {})
+                .decoration(BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.blue, Colors.green],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ))
+                .textColor(Colors.white)
+                .build(const Text('渐变背景')),
+            AuvGaps.vGap16,
+
+            // 新增背景图按钮
+            AuvButton()
+                .large()
+                .radius(100)
+                .onPressed(() {})
+                .decoration(BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage('https://picsum.photos/200/300'),
+                    fit: BoxFit.cover,
+                  ),
+                  // borderRadius: BorderRadius.circular(12),
+                ))
+                .textColor(Colors.white)
+                .build(const Text('背景图片')),
           ]),
         ],
       ),

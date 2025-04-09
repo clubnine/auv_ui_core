@@ -28,17 +28,11 @@ class _AppBoxDemoContent extends StatelessWidget {
             _buildDemoBox('默认样式', AuvBox()),
             _buildDemoBox('自定义背景色', AuvBox().color(Colors.blue)),
             _buildDemoBox('大圆角', AuvBox().r24().color(Colors.green)),
-            _buildDemoBox(
-                '边框', AuvBox().border(Border.all(color: Colors.red, width: 2))),
-            _buildDemoBox(
-                '阴影',
-                AuvBox()
-                    .elevation(8)
-                    .circle()
-                    .shadowColor(Colors.purple.withOpacity(0.3))),
+            _buildDemoBox('边框', AuvBox().border(Border.all(color: Colors.red, width: 2))),
+            _buildDemoBox('阴影', AuvBox().elevation(8).circle().shadowColor(Colors.purple.withOpacity(0.3))),
           ]),
           _buildDemoSection('全局间距', [
-            _buildDemoBox('内边距 p16', AuvBox().p16().color(Colors.yellow)),
+            _buildDemoBox('内边距 p16', AuvBox().p16().r16().border(Border.all(color: Colors.red, width: 1)).color(Colors.yellow)),
             _buildDemoBox('外边距 m16', AuvBox().m16().color(Colors.red)),
             _buildDemoBox('组合使用', AuvBox().p8().m8().color(Colors.red)),
           ]),
@@ -57,24 +51,8 @@ class _AppBoxDemoContent extends StatelessWidget {
             _buildDemoBox('底部外边距 mb16', AuvBox().mb16().color(Colors.yellow)),
           ]),
           _buildDemoSection('组合用法', [
-            _buildDemoBox(
-                '卡片1',
-                AuvBox()
-                    .color(Colors.white)
-                    .r12()
-                    .p16()
-                    .m8()
-                    .elevation(4)
-                    .border(Border.all(color: Colors.grey[300]!))),
-            _buildDemoBox(
-                '卡片2',
-                AuvBox()
-                    .color(Colors.blue[50]!)
-                    .r8()
-                    .ph16()
-                    .pv8()
-                    .mt16()
-                    .mb8()),
+            _buildDemoBox('卡片1', AuvBox().color(Colors.white).r12().p16().m8().elevation(4).border(Border.all(color: Colors.grey[300]!))),
+            _buildDemoBox('卡片2', AuvBox().color(Colors.blue[50]!).r8().ph16().pv8().mt16().mb8()),
           ]),
           _buildDemoSection('背景装饰', [
             _buildDemoBox(

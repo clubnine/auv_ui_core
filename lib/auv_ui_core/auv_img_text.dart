@@ -317,10 +317,7 @@ class AuvImgText {
   }
 
   Widget buildWithImageProvider(ImageProvider image, String text) {
-    if (_backgroundColor == null &&
-        _decoration == null &&
-        _margin == null &&
-        _borderColor == null) {
+    if (_backgroundColor == null && _decoration == null && _margin == null && _borderColor == null) {
       return _buildContent(image, text);
     }
 
@@ -328,9 +325,7 @@ class AuvImgText {
     BoxDecoration decoration;
     if (_decoration != null && _decoration is BoxDecoration) {
       decoration = (_decoration as BoxDecoration).copyWith(
-        borderRadius: _decoration is BoxDecoration
-            ? (_decoration as BoxDecoration).borderRadius ?? borderRadius
-            : borderRadius,
+        borderRadius: _decoration is BoxDecoration ? (_decoration as BoxDecoration).borderRadius ?? borderRadius : borderRadius,
         border: _borderColor != null
             ? Border.all(
                 color: _borderColor!,
@@ -371,7 +366,7 @@ class AuvImgText {
       image: image, // 修正为_image
       width: _getImageSize(),
       height: _getImageSize(),
-      fit: BoxFit.contain,
+      fit: BoxFit.cover,
     );
 
     // 构建文本Widget，使用计算得到的文本样式

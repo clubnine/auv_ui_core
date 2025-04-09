@@ -22,15 +22,40 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 /// ```
 class AuvBox {
   // ========== 基础属性 ==========
+  /// 内边距设置，控制内容与边框之间的间距
+  /// 可通过p*()系列方法快捷设置
   EdgeInsetsGeometry? _padding;
+
+  /// 外边距设置，控制组件与外部元素的间距
+  /// 可通过m*()系列方法快捷设置
   EdgeInsetsGeometry? _margin;
+
+  /// 背景颜色，设置容器的填充色
+  /// 可通过color()方法设置
   Color? _color;
+
+  /// 阴影颜色，配合elevation使用
+  /// 默认为半透明黑色(0.1透明度)
+  /// 可通过shadowColor()方法设置
   Color? _shadowColor;
+
+  /// 阴影高度，控制阴影的强度
+  /// 0表示无阴影，值越大阴影越明显
+  /// 可通过elevation()方法设置
   double _elevation = 0.0;
+
+  /// 圆角半径，控制容器四个角的弧度
+  /// 0表示直角，值越大越圆润
+  /// 可通过r*()系列方法快捷设置
   double _borderRadius = 0.0;
+
+  /// 边框样式，控制容器的边框粗细和颜色
+  /// 可通过border()方法设置
   Border? _border;
 
-  /// 背景装饰效果
+  /// 背景装饰效果，可替代color属性实现更复杂的背景
+  /// 支持渐变、图片等高级装饰效果
+  /// 可通过decoration()方法设置
   Decoration? _decoration;
 
   // ... 已有方法保持不变 ...

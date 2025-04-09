@@ -1,10 +1,12 @@
 import 'package:auv_core/auv_ui_core/auv_gaps.dart';
+import 'package:auv_core/demo/auv_text_styles_demo.dart';
 import 'package:auv_core/demo/app_bar_demo.dart';
 import 'package:auv_core/demo/box_demo.dart';
 import 'package:auv_core/demo/button_demo.dart';
 import 'package:auv_core/demo/colors_demo.dart';
 import 'package:auv_core/demo/dimens_demo.dart';
 import 'package:auv_core/demo/gaps_demo.dart';
+import 'package:auv_core/demo/icon_demo.dart';
 import 'package:auv_core/demo/image_loader_demo.dart';
 import 'package:flutter/material.dart';
 import 'package:auv_core/auv_ui_core/auv_box.dart';
@@ -42,8 +44,7 @@ class MainDemoApp extends StatelessWidget {
 class DemoHomePage extends StatelessWidget {
   const DemoHomePage({super.key});
 
-  Widget _buildDemoItem(
-      BuildContext context, String title, IconData icon, Widget page) {
+  Widget _buildDemoItem(BuildContext context, String title, IconData icon, Widget page) {
     return Column(
       children: [
         ListTile(
@@ -69,28 +70,19 @@ class DemoHomePage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          _buildDemoItem(
-              context, 'AuvBox 演示', Icons.widgets_outlined, const BoxDemoApp()),
-          _buildDemoItem(context, 'AuvButton 演示', Icons.touch_app_outlined,
-              const ButtonDemoApp()),
-          _buildDemoItem(context, 'Colors 演示', Icons.color_lens_outlined,
-              const ColorsDemoApp()),
-          _buildDemoItem(context, 'Dimens 演示', Icons.straighten_outlined,
-              const DimensDemoApp()),
-          _buildDemoItem(
-              context, 'Gaps 演示', Icons.space_bar, const GapsDemoApp()),
-          _buildDemoItem(
-              context, 'Space 演示', Icons.space_dashboard, const SpaceDemoApp()),
-          _buildDemoItem(
-              context, 'ImgText 演示', Icons.image, const ImgTextDemoApp()),
-          _buildDemoItem(context, 'TagSelector 演示', Icons.label_important,
-              const TagSelectorDemoApp()),
-          _buildDemoItem(
-              context, 'Dialog 演示', Icons.message, const DialogDemoApp()),
-          _buildDemoItem(context, 'AppBar 演示', Icons.view_headline,
-              const AppBarDemoPage()),
-          _buildDemoItem(context, 'Image Loader 演示', Icons.album,
-              const ImageLoaderDemoApp()),
+          _buildDemoItem(context, 'Dimens 演示', Icons.straighten_outlined, const DimensDemoApp()),
+          _buildDemoItem(context, 'Gaps 演示', Icons.space_bar, const GapsDemoApp()),
+          _buildDemoItem(context, 'Space 演示', Icons.space_dashboard, const SpaceDemoApp()),
+          _buildDemoItem(context, 'AuvBox 演示', Icons.widgets_outlined, const BoxDemoApp()),
+          _buildDemoItem(context, 'Colors 演示', Icons.color_lens_outlined, const ColorsDemoApp()),
+          _buildDemoItem(context, 'AuvButton 演示', Icons.touch_app_outlined, const ButtonDemoApp()),
+          _buildDemoItem(context, 'ImgText 演示', Icons.image, const ImgTextDemoApp()),
+          _buildDemoItem(context, 'TagSelector 演示', Icons.label_important, const TagSelectorDemoApp()),
+          _buildDemoItem(context, 'Dialog 演示', Icons.message, const DialogDemoApp()),
+          _buildDemoItem(context, 'AppBar 演示', Icons.view_headline, const AppBarDemoPage()),
+          _buildDemoItem(context, 'Image Loader 演示', Icons.album, const ImageLoaderDemoApp()),
+          _buildDemoItem(context, 'Icon 演示', Icons.album, const IconDemoApp()),
+          _buildDemoItem(context, '文字样式 演示', Icons.album, const AuvTextStylesDemo()),
         ],
       ),
     );
