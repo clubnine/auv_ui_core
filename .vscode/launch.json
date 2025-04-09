@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "auv_core (debug)",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--dart-define=ENV=DEBUG",
+                "--verbose"
+            ]
+        },
+        {
+            "name": "auv_core (profile)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "args": [
+                "--dart-define=ENV=PROFILE"
+            ]
+        },
+        {
+            "name": "auv_core (release)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "--dart-define=ENV=RELEASE"
+            ]
+        },
+        {
+            "name": "Flutter Attach",
+            "request": "attach",
+            "type": "dart"
+        }
+    ]
+}
