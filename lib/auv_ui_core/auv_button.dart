@@ -20,7 +20,7 @@ class AuvButton {
   static const Color _secondaryColor = Color(0xFFF2F6FC);
 
   // 构建属性
-  VoidCallback? _onPressed;
+  VoidCallback? _click;
   AuvWidgetType _type = AuvWidgetType.primary;
   AuvWidgetSize _size = AuvWidgetSize.middle;
   AuvWidgetShape _shape = AuvWidgetShape.radius;
@@ -38,12 +38,68 @@ class AuvButton {
 
   /// 背景装饰效果，可替代backgroundColor实现更复杂的背景
   Decoration? _decoration;
+  EdgeInsets? _margin;
 
   AuvButton();
 
   // 链式调用方法
-  AuvButton onPressed(VoidCallback onPressed) {
-    _onPressed = onPressed;
+  AuvButton click(VoidCallback click) {
+    _click = click;
+    return this;
+  }
+
+  AuvButton margin(EdgeInsets margin) {
+    _margin = margin;
+    return this;
+  }
+
+  AuvButton m2() {
+    _margin = EdgeInsets.all(2.w);
+    return this;
+  }
+
+  AuvButton m4() {
+    _margin = EdgeInsets.all(4.w);
+    return this;
+  }
+
+  AuvButton m6() {
+    _margin = EdgeInsets.all(6.w);
+    return this;
+  }
+
+  AuvButton m8() {
+    _margin = EdgeInsets.all(8.w);
+    return this;
+  }
+
+  AuvButton m10() {
+    _margin = EdgeInsets.all(10.w);
+    return this;
+  }
+
+  AuvButton m12() {
+    _margin = EdgeInsets.all(12.w);
+    return this;
+  }
+
+  AuvButton m16() {
+    _margin = EdgeInsets.all(16.w);
+    return this;
+  }
+
+  AuvButton m20() {
+    _margin = EdgeInsets.all(20.w);
+    return this;
+  }
+
+  AuvButton m24() {
+    _margin = EdgeInsets.all(24.w);
+    return this;
+  }
+
+  AuvButton m32() {
+    _margin = EdgeInsets.all(32.w);
     return this;
   }
 
@@ -285,6 +341,9 @@ class AuvButton {
           side: _borderColor != null ? BorderSide(color: _borderColor!, width: _borderWidth!) : BorderSide.none,
         ),
       ),
+      fixedSize: MaterialStateProperty.all(
+        Size(_width ?? 0, _height ?? _getDefaultHeight()),
+      ),
       minimumSize: MaterialStateProperty.all(
         Size(_width ?? 0, _height ?? _getDefaultHeight()),
       ),
@@ -292,24 +351,26 @@ class AuvButton {
       shadowColor: MaterialStateProperty.all(
         _shadow?.first.color ?? Colors.transparent,
       ),
-      // 添加装饰效果
-      overlayColor: MaterialStateProperty.all(Colors.transparent),
-      surfaceTintColor: MaterialStateProperty.all(Colors.transparent),
     );
 
-    if (_decoration != null) {
+    if (_decoration != null || _margin != null || _width != null || _height != null) {
       return Container(
+        margin: _margin,
+        color: Colors.blue.withOpacity(0.2),
+        width: _width,
+        height: _height ?? _getDefaultHeight(),
         decoration: _decoration, // 应用装饰效果
+        alignment: Alignment.center,
         child: ElevatedButton(
           style: buttonStyle,
-          onPressed: _disabled ? null : _onPressed,
+          onPressed: _disabled ? null : _click,
           child: child,
         ),
       );
     } else {
       return ElevatedButton(
         style: buttonStyle,
-        onPressed: _disabled ? null : _onPressed,
+        onPressed: _disabled ? null : _click,
         child: child,
       );
     }
@@ -318,17 +379,17 @@ class AuvButton {
   EdgeInsets _getPadding() {
     switch (_size) {
       case AuvWidgetSize.micro:
-        return EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.w);
+        return EdgeInsets.symmetric(horizontal: _width != null ? 0 : 8.w, vertical: _height != null ? 0 : 2.w);
       case AuvWidgetSize.tiny:
-        return EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.w);
+        return EdgeInsets.symmetric(horizontal: _width != null ? 0 : 10.w, vertical: _height != null ? 0 : 3.w);
       case AuvWidgetSize.mini:
-        return EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.w);
+        return EdgeInsets.symmetric(horizontal: _width != null ? 0 : 12.w, vertical: _height != null ? 0 : 4.w);
       case AuvWidgetSize.small:
-        return EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.w);
+        return EdgeInsets.symmetric(horizontal: _width != null ? 0 : 16.w, vertical: _height != null ? 0 : 6.w);
       case AuvWidgetSize.middle:
-        return EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w);
+        return EdgeInsets.symmetric(horizontal: _width != null ? 0 : 20.w, vertical: _height != null ? 0 : 8.w);
       case AuvWidgetSize.large:
-        return EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.w);
+        return EdgeInsets.symmetric(horizontal: _width != null ? 0 : 24.w, vertical: _height != null ? 0 : 10.w);
     }
   }
 

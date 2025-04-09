@@ -46,9 +46,9 @@ class _AuvTextDemoContent extends StatelessWidget {
           _buildDemoSection('链式调用', [
             AuvText('链式调用示例').title1().color(Colors.blue).build(),
             AuvGaps.vGap8,
-            AuvText('粗体 + 斜体 + 下划线').body().bold().italic().underline().build(),
+            AuvText('粗体 + 斜体 + 下划线').body().italic().underline().build(),
             AuvGaps.vGap8,
-            AuvText('自定义大小 + 颜色 + 字间距').size(20.sp).color(Colors.purple).letterSpacing(2.0).build(),
+            AuvText('自定义大小 + 颜色 + 字间距').color(Colors.purple).letterSpacing(2.0).build(),
             AuvGaps.vGap8,
             AuvText('单行省略文本 - 这是一段很长的文本，超出宽度会显示省略号').body2().singleLine().ellipsis().build(),
           ]),
@@ -103,7 +103,7 @@ class _AuvTextDemoContent extends StatelessWidget {
           _buildDivider(),
           _buildDemoSection('组合样式', [
             AuvBox().color(AuvColors.primary).p12().build(
-                  AuvText('白色文本 + 粗体 + 居中').title2().color(Colors.white).bold().center().build(),
+                  AuvText('白色文本 + 粗体 + 居中').title2().color(Colors.white).center().build(),
                 ),
             AuvGaps.vGap8,
             AuvBox().color(Colors.amber).p12().build(

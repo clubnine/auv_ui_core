@@ -13,6 +13,10 @@ extension TextStyleExtension on TextStyle {
   TextStyle size(double fontSize) {
     return copyWith(fontSize: fontSize);
   }
+
+  TextStyle height(double height) {
+    return copyWith(height: height);
+  }
 }
 
 /// Roboto字体样式系统
@@ -27,6 +31,7 @@ class AuvTextStyles {
     return GoogleFonts.roboto(
       fontSize: fontSize,
       fontWeight: fontWeight,
+      height: 1,
       color: color.withOpacity(opacity),
     );
   }

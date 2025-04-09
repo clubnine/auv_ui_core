@@ -118,31 +118,10 @@ class AuvText {
     return this;
   }
 
-  /// 设置文本大小
-  AuvText size(double fontSize) {
-    _style = _style?.copyWith(fontSize: fontSize) ?? TextStyle(fontSize: fontSize);
-    return this;
-  }
-
   /// 设置文本粗细
   AuvText weight(FontWeight weight) {
     _style = _style?.copyWith(fontWeight: weight) ?? TextStyle(fontWeight: weight);
     return this;
-  }
-
-  /// 设置粗体
-  AuvText bold() {
-    return weight(FontWeight.bold);
-  }
-
-  /// 设置中等粗细
-  AuvText medium() {
-    return weight(FontWeight.w500);
-  }
-
-  /// 设置常规粗细
-  AuvText regular() {
-    return weight(FontWeight.normal);
   }
 
   /// 设置文本对齐方式

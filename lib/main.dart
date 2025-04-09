@@ -9,6 +9,7 @@ import 'package:auv_core/demo/dimens_demo.dart';
 import 'package:auv_core/demo/gaps_demo.dart';
 import 'package:auv_core/demo/icon_demo.dart';
 import 'package:auv_core/demo/image_loader_demo.dart';
+import 'package:auv_core/demo/product_card_demo.dart';
 import 'package:flutter/material.dart';
 import 'package:auv_core/auv_ui_core/auv_box.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -87,6 +88,7 @@ class DemoHomePage extends StatelessWidget {
           _buildDemoItem(context, '文字样式 演示', Icons.album, const AuvTextStylesDemo()),
           _buildDemoItem(context, 'AuvText 演示', Icons.text_fields, const AuvTextDemoApp()),
           _buildDemoItem(context, '线条 演示', Icons.album, const DividerDemoPage()),
+          _buildDemoItem(context, '商品组件 演示', Icons.album, const ProductCardDemo()),
         ],
       ),
     );
