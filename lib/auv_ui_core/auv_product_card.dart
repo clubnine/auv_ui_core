@@ -1,16 +1,16 @@
-import 'package:auv_core/auv_ui_core/auv_colors.dart';
-import 'package:auv_core/auv_ui_core/auv_image.dart';
-import 'package:auv_core/auv_ui_core/auv_img_text.dart';
-import 'package:auv_core/auv_ui_core/auv_space.dart';
-import 'package:auv_core/auv_ui_core/auv_text_styles.dart';
-import 'package:auv_core/auv_ui_core/auv_widget_enums.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_colors.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_image.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_img_text.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_space.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_text_styles.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_widget_enums.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:auv_core/auv_ui_core/auv_box.dart';
-import 'package:auv_core/auv_ui_core/auv_gaps.dart';
-import 'package:auv_core/auv_ui_core/auv_text.dart';
-import 'package:auv_core/auv_ui_core/auv_button.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_box.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_gaps.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_text.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_button.dart';
 
 /// 商品卡片组件
 /// 用于展示商品信息，支持以下功能：

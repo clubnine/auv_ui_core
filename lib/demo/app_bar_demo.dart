@@ -1,4 +1,4 @@
-import 'package:auv_core/auv_ui_core/auv_gaps.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_gaps.dart';
 import 'package:flutter/material.dart';
 
 class AppBarDemoPage extends StatelessWidget {

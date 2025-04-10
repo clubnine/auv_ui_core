@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:auv_core/auv_ui_core/auv_image_local.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_image_local.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 

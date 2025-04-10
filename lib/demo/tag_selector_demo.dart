@@ -1,8 +1,8 @@
-import 'package:auv_core/auv_ui_core/auv_dimens.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_dimens.dart';
 import 'package:flutter/material.dart';
-import 'package:auv_core/auv_ui_core/auv_tag_selector.dart';
-import 'package:auv_core/auv_ui_core/auv_widget_enums.dart';
-import 'package:auv_core/auv_ui_core/auv_gaps.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_tag_selector.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_widget_enums.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_gaps.dart';
 
 class TagSelectorDemoApp extends StatelessWidget {
   const TagSelectorDemoApp({super.key});

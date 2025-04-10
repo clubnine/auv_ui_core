@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:auv_core/auv_ui_core/auv_image_net.dart';
-import 'package:auv_core/auv_ui_core/auv_gaps.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_image_net.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_gaps.dart';
 
 class ImageLoaderDemoApp extends StatelessWidget {
   const ImageLoaderDemoApp({super.key});

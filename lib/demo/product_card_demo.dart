@@ -1,6 +1,6 @@
-import 'package:auv_core/auv_ui_core/auv_dimens.dart';
-import 'package:auv_core/auv_ui_core/auv_product_card.dart';
-import 'package:auv_core/extensions/string_extensions.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_dimens.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_product_card.dart';
+import 'package:auv_ui_core/extensions/string_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

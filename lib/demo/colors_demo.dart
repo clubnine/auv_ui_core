@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:auv_core/auv_ui_core/auv_colors.dart';
-import 'package:auv_core/auv_ui_core/auv_gaps.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_colors.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_gaps.dart';
 
 class ColorsDemoApp extends StatelessWidget {
   const ColorsDemoApp({super.key});

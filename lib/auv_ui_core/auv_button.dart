@@ -1,7 +1,7 @@
-import 'package:auv_core/auv_ui_core/auv_colors.dart';
-import 'package:auv_core/auv_ui_core/auv_dimens.dart';
-import 'package:auv_core/auv_ui_core/auv_img_text.dart';
-import 'package:auv_core/auv_ui_core/auv_widget_enums.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_colors.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_dimens.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_img_text.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_widget_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

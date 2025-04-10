@@ -1,7 +1,7 @@
-import 'package:auv_core/extensions/string_extensions.dart';
+import 'package:auv_ui_core/extensions/string_extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:auv_core/auv_ui_core/auv_icon.dart';
-import 'package:auv_core/auv_ui_core/auv_gaps.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_icon.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_gaps.dart';
 
 class IconDemoApp extends StatelessWidget {
   const IconDemoApp({super.key});

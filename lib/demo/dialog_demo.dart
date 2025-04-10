@@ -1,6 +1,6 @@
-import 'package:auv_core/auv_ui_core/auv_image_net.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_image_net.dart';
 import 'package:flutter/material.dart';
-import 'package:auv_core/auv_ui_core/auv_dialog.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_dialog.dart';
 
 class DialogDemoApp extends StatelessWidget {
   const DialogDemoApp({super.key});

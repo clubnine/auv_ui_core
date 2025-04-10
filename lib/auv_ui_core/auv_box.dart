@@ -1,5 +1,5 @@
-import 'package:auv_core/auv_ui_core/auv_dimens.dart';
-import 'package:auv_core/auv_ui_core/auv_space.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_dimens.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_space.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

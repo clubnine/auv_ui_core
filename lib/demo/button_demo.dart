@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:auv_core/auv_ui_core/auv_button.dart';
-import 'package:auv_core/auv_ui_core/auv_widget_enums.dart';
-import 'package:auv_core/auv_ui_core/auv_gaps.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_button.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_widget_enums.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_gaps.dart';
 
 class ButtonDemoApp extends StatelessWidget {
   const ButtonDemoApp({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:auv_core/auv_ui_core/auv_space.dart';
-import 'package:auv_core/auv_ui_core/auv_gaps.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_space.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_gaps.dart';
 
 class SpaceDemoApp extends StatelessWidget {
   const SpaceDemoApp({super.key});
@@ -33,14 +33,14 @@ class _SpaceDemoContent extends StatelessWidget {
             _buildSpaceItem('s32', AuvSpace.s32),
             _buildSpaceItem('s40', AuvSpace.s40),
           ]),
-          
+
           _buildSpaceSection('轴向间距', [
             _buildSpaceItem('h8', AuvSpace.h8),
             _buildSpaceItem('h16', AuvSpace.h16),
             _buildSpaceItem('v8', AuvSpace.v8),
             _buildSpaceItem('v16', AuvSpace.v16),
           ]),
-          
+
           _buildSpaceSection('单边间距', [
             _buildSpaceItem('t8', AuvSpace.t8),
             _buildSpaceItem('b8', AuvSpace.b8),

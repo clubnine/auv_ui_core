@@ -1,13 +1,13 @@
 // lib/demo/test_page.dart
 
-import 'package:auv_core/auv_ui_core/auv_box.dart';
-import 'package:auv_core/auv_ui_core/auv_gaps.dart';
-import 'package:auv_core/auv_ui_core/auv_img_text.dart';
-import 'package:auv_core/auv_ui_core/auv_button.dart';
-import 'package:auv_core/auv_ui_core/auv_text.dart';
-import 'package:auv_core/auv_ui_core/auv_text_styles.dart';
-import 'package:auv_core/auv_ui_core/auv_widget_enums.dart';
-import 'package:auv_core/extensions/string_extensions.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_box.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_gaps.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_img_text.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_button.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_text.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_text_styles.dart';
+import 'package:auv_ui_core/auv_ui_core/auv_widget_enums.dart';
+import 'package:auv_ui_core/extensions/string_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
