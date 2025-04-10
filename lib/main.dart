@@ -38,7 +38,12 @@ class MainDemoApp extends StatelessWidget {
         return MaterialApp(
           title: 'AUV Core 演示',
           theme: ThemeData(primarySwatch: Colors.blue),
-          home: const DemoHomePage(),
+          home: MediaQuery(
+            ///设置文字大小不随系统设置改变
+            ///ScreenUtil().screenWidth / AuvConst.AUV_SCREEN_DESIGN_WIDTH
+            data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
+            child: const DemoHomePage(),
+          ),
         );
       },
     );

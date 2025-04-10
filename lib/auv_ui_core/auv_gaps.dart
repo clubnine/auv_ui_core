@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuvGaps {
+  static Widget hGap1 = SizedBox(width: 1.0.w);
   static Widget hGap2 = SizedBox(width: 2.0.w);
+  static Widget hGap3 = SizedBox(width: 3.0.w);
   static Widget hGap4 = SizedBox(width: 4.0.w);
   static Widget hGap6 = SizedBox(width: 6.0.w);
   static Widget hGap8 = SizedBox(width: 8.0.w);
@@ -21,7 +23,9 @@ class AuvGaps {
   static Widget hGap48 = SizedBox(width: 48.w);
   static Widget hGap64 = SizedBox(width: 64.w);
 
+  static Widget vGap1 = SizedBox(height: 1.w);
   static Widget vGap2 = SizedBox(height: 2.0.w);
+  static Widget vGap3 = SizedBox(height: 3.0.w);
   static Widget vGap4 = SizedBox(height: 4.0.w);
   static Widget vGap6 = SizedBox(height: 6.0.w);
   static Widget vGap8 = SizedBox(height: 8.0.w);

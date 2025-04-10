@@ -143,13 +143,14 @@ class AuvProductCard extends StatelessWidget {
 
                     AuvGaps.vGap16,
 
-                    AuvButton().m12().height(44).width(double.infinity).primary().circle().click(() {
+                    AuvButton().m12().height(44.w).width(double.infinity).primary().radius(18.w).click(() {
                       print('点击');
                     }).build(Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        AuvText("USD 1.99").style(AuvTextStyles.w_body2_B).build(),
-                        AuvText("USD 19.99").style(AuvTextStyles.w_caption2_B_80).strikethrough().build(),
+                        AuvText("USD 1.99").style(AuvTextStyles.w_body2_M).build(),
+                        AuvGaps.vGap1,
+                        AuvText("USD 19.99").style(AuvTextStyles.w_caption_R_80).strikethrough().build(),
                       ],
                     )),
 
