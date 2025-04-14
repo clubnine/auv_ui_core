@@ -22,6 +22,12 @@ class AuvIcon {
     }
   }
 
+  /// 创建圆形图片Widget
+  /// [icon] 图片Widget
+  /// [radius] 圆形半径
+  /// [color] 圆形背景色
+  /// [borderColor] 圆形边框色
+  /// [borderWidth] 圆形边框宽度
   static Widget circle(Widget icon, double radius, {Color? color, Color? borderColor, double borderWidth = 0.0}) {
     return Container(
       clipBehavior: Clip.hardEdge,
@@ -44,7 +50,7 @@ class AuvIcon {
     }
   }
 
-  // 内部方法：获取图片Widget
+  /// 内部方法：获取图片Widget
   static Widget _getImageWidget(
     String url,
     double? width,
